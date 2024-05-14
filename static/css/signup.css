@@ -36,8 +36,8 @@
 }
 
 .input-field{
-    background-color: rgba(132, 132, 69, 0.599);
-    color: rgb(255, 255, 255);
+    background-color: rgba(213, 235, 255, 0.478);
+    color: rgb(0, 0, 0);
     height: 50px;
     width: 100%;
     padding: 0 10px 0 45px;
@@ -48,20 +48,21 @@
 }
 
 .input-field:hover, .input-field:focus{
-    background-color: rgba(210, 210, 34, 0.449);
+    /* babal combo raixa yellow ra yo color */
+    background-color: rgb(213, 235, 255); 
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.673);
     transition: .2s ease-in-out;
 }
 
 ::-webkit-input-placeholder{
-    color: white;
+    color: black;
 }
 
 .input-box i{
     position: relative;
     top: -35px;
     left: 15px;
-    color: white;
+    color: black;
 }
 
 .submit{
@@ -119,7 +120,7 @@
 
 .thirdcol span a{
     font-weight: 500;
-    color: rgb(251, 255, 0);
+    color:rgb(213, 235, 255);
     margin-left: 15px;
     text-decoration: none;
 }
