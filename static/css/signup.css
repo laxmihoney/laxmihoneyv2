@@ -1,0 +1,128 @@
+
+
+.signup-box{
+    background: transparent;
+    width: 100%;
+    padding: 0 5%;
+    margin: -10% 0 0 0;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    transition: .3s ease-in-out;
+    flex-direction: column;
+    z-index: 0.9;
+}
+
+.top h2{
+    color: rgb(255, 255, 0);
+    text-shadow: 0 0 20px rgb(0, 0, 0);
+    text-align: center;
+    font-weight: 550;
+    font-size: 4vw;
+    padding: 10px 0 30px 0;
+}
+@media screen and (min-width: 1200px) {
+    .top h2{
+        font-size: 2vw;
+    }
+}
+
+
+.two-forms{
+    gap: 20px;
+    display: flex;
+}
+
+.input-field{
+    background-color: rgba(132, 132, 69, 0.599);
+    color: rgb(255, 255, 255);
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    transition: .2s ease;
+}
+
+.input-field:hover, .input-field:focus{
+    background-color: rgba(210, 210, 34, 0.449);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.673);
+    transition: .2s ease-in-out;
+}
+
+::-webkit-input-placeholder{
+    color: white;
+}
+
+.input-box i{
+    position: relative;
+    top: -35px;
+    left: 15px;
+    color: white;
+}
+
+.submit{
+    color: black;
+    /* text-shadow: 0 0 5px rgb(0, 0, 0); */
+    cursor: pointer;
+    width: 100%;
+    height: 45px;
+    transition: .2s ease-in-out;
+    background-color: rgb(255, 255, 0);
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: medium;
+    font-weight: 300;
+}
+.submit:hover{
+    background-color: rgba(255, 255, 0, 0.758);
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.two-col{
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin: 10px 0 30px 15px;
+}
+
+.two-col .one{
+    display: flex;
+    gap: 5px;
+}
+
+.two label a{
+    text-decoration: none;
+    color: white;
+}
+.two label a:hover{
+    text-decoration: underline;
+}
+
+.thirdcol{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.thirdcol span{
+    margin-left: 2px;
+    color: rgb(255, 255, 255);
+    padding: 10px 0;
+    font-size: large;
+}
+
+.thirdcol span a{
+    font-weight: 500;
+    color: rgb(251, 255, 0);
+    margin-left: 15px;
+    text-decoration: none;
+}
+.thirdcol span a:hover{
+    text-decoration: underline;
+}
