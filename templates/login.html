@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block activelog %}activelog{% endblock activelog %}
-{% block title %}Signin | {% endblock %}
+{% block title %}Login | {% endblock %}
 {% block head%}
 
 <link rel="stylesheet" href="/static/css/signup.css">
-<link rel="stylesheet" href="/static/css/signin.css">
+<link rel="stylesheet" href="/static/css/login.css">
 <script>
     function validateForm() {
         var password = document.getElementById("password").value;
@@ -22,15 +22,15 @@
 <!-- -------login form box------------ -->
 
 <div class="signup-box">
-    <form action="/signin/" method="post" >
+    <form action="/login/" method="post" >
         {% csrf_token %}
         <div class="top">
-            <h2>Sign in</h2>
+            <h2>Log in</h2>
         </div>
         <div class="form-box">
             <div class="input-box">
-                <input type="email" class="input-field" placeholder="Email" name="email" required>
-                <i class="fa-regular fa-envelope"></i>
+                <input type="text" class="input-field" placeholder="Username" name="username" required>
+                <i class="fa-regular fa-user"></i>
             </div>
             <div class="input-box">
                 <input type="password" class="input-field" placeholder="Confirm Password" id="confirm_password" name="pass2" required>

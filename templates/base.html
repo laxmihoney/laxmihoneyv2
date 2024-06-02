@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div class="nav-login-button">
-            <button class="btn {% block activelog %}{% endblock activelog %}" id="activelog"><a href="{% if user.is_authenticated%}/profile/{%else%}/signup/{% endif %}">{% if user.is_authenticated%} {{user.first_name}} {%else%}Login {% endif %}  <i class="fa-regular fa-circle-user"></i></a></button>
+            <button class="btn {% block activelog %}{% endblock activelog %}" id="activelog"><a href="{% if user.is_authenticated%}/profile/{%else%}/login/{% endif %}">{% if user.is_authenticated%} {{user.first_name}} {%else%}Login {% endif %}  <i class="fa-regular fa-circle-user"></i></a></button>
         </div>
         <div class="nav-menu-btn">
             <i class="fa-regular fa-compass"></i>
@@ -40,6 +40,16 @@
     </header>
     </div>
     <div class="body1">
+    {% if messages %}
+        <div class="messages" id="message-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                <span>{{ message }}</span>
+                <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     {% block body %}
     {% endblock body %}
     </div>

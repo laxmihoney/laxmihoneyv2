@@ -2,17 +2,20 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 
-def signup(request):
+def signup_view(request):
     if request.method=="POST":
         username = request.POST['username']
+        username = username.casefold()
         fname = request.POST['fname']
+        fname = fname.capitalize()
         lname = request.POST['lname']
+        lname = lname.capitalize()
         email = request.POST['email']
         password = request.POST['pass2']
 
@@ -21,29 +24,36 @@ def signup(request):
         myuser.last_name = lname
         myuser.save()
         messages.success(request, "user created successfully")
-        return redirect('signin')
+        return redirect('login')
 
     return render(request, 'signup.html')
 
-def signin(request):
-    if request.method=="POST":
-        email = request.POST['email']
-        password = request.POST['pass2']
+def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
 
-        user = authenticate(email = email, password=password)
+    else:
+        if request.method=="POST":
+            username = request.POST['username']
+            password = request.POST['pass2']
 
-        if user is not None:
-            login(request,user)
-            fname = user.first_name
-            return render(request,'home.html',{'fname':fname})
-        else:
-            messages.error(request,"Bad credentials")
-            return redirect('signin')
+            user = authenticate(username=username, password=password)
 
-    return render(request, 'signin.html')
+            if user is not None:
+                login(request,user)
+                fname = user.first_name
+                messages.success(request, f"{fname} logged In successfully")
+                return redirect('home')
+            else:
+                messages.error(request,"Bad credentials")
+                return redirect('login')
 
-def signout(request):
-    return render(request, 'signout.html')
+        return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    messages.success(request,"Logged Out successfully")
+    return redirect('home')
 
 def services(request):
     return render(request, 'service.html')
@@ -52,7 +62,7 @@ def profile(request):
     return render(request, 'profile.html')
 
 def about(request):
-    return render(request, 'signin.html')
+    return render(request, 'about.html')
 
 def products(request):
     return render(request,'products.html')

@@ -36,7 +36,7 @@
 }
 
 .input-field{
-    background-color: rgba(213, 235, 255, 0.478);
+    background-color: rgba(202, 229, 255, 0.563);
     color: rgb(0, 0, 0);
     height: 50px;
     width: 100%;
@@ -114,16 +114,23 @@
 .thirdcol span{
     margin-left: 2px;
     color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.566);
     padding: 10px 0;
     font-size: large;
 }
 
 .thirdcol span a{
-    font-weight: 500;
-    color:rgb(213, 235, 255);
+    font-weight: 600;
+    color:rgb(0, 0, 0);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.459);
     margin-left: 15px;
     text-decoration: none;
+    text-decoration: bold;
+    transition: 3s;
+    transition: ease-in-out;
 }
 .thirdcol span a:hover{
     text-decoration: underline;
+    transition: 3s;
+    transition: ease-in-out;
 }

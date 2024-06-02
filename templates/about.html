@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Home | {% endblock title %}
+{% block title %}About Us | {% endblock title %}
 {% block head %}
 <link rel="stylesheet" href="/static/css/home.css">
 {% endblock head %}
-{% block classactiveh %}active{% endblock classactiveh %}
+{% block classactivea %}active{% endblock classactivea %}
 
 
 {% block body %}
 {% if user.is_authenticated %}
 {% else %}
-<h2>Nothing to show please <a href="/login/">login</a> first!!!</h2>
+<h2>Nothing to show please login first!!!</h2>
 {% endif %}
 {% endblock body %}

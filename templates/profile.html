@@ -1,12 +1,16 @@
 {% extends "base.html" %}
+{% block title %}{% if user.is_authenticated %}{{user.first_name}} | {% endif %}{% endblock title %}
 {% block activelog %}activelog{% endblock activelog %}
 {% block head %}
 <link rel="stylesheet" href="/static/css/profile.css">
 {% endblock head %}
+{% block body %}
 {% if user.is_authenticated %}
 <div class="userprofile profilebox">
 
 </div>
+<a href="{% url 'logout' %}">Logout</a>
+
 {% else %}
 <div class="nonuserprofile profilebox">
     <h2>You are not logedin</h2>
@@ -15,3 +19,4 @@
 </div>
 
 {% endif %}
+{% endblock body %} %}
