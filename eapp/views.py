@@ -63,7 +63,7 @@ def verify(request):
                     user.is_active=True
                     user.save()
                     messages.success(request,"account verified succesfully login to your account!!")
-                    return redirect('home')
+                    return redirect('login')
 
         return render(request, 'verify.html')
 
