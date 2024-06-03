@@ -7,7 +7,7 @@ from laxmihoneyv2 import settings
 from django.core.mail import send_mail
 
 
-
+vercode = 123456
 
 # Create your views here.
 def home(request):
@@ -40,7 +40,7 @@ def signup_view(request):
 
         #email
         subject="Activate Your account for Laxmi Honey Industry"
-        message ="Hello " + myuser.first_name +"!\n"+"Welcome to Laxmi honey industry"
+        message ="Hello " + myuser.first_name +"!\n"+"Welcome to Laxmi honey industry\n\n"+"your details for verification\n"+"Username: "+myuser.username+"\nVerification code: "+str(vercode)+"\nThank you"
         from_email = settings.EMAIL_HOST_USER
         to_emails = [myuser.email]
         send_mail(subject,message,from_email,to_emails, fail_silently=True)
@@ -49,6 +49,23 @@ def signup_view(request):
         return redirect('login')
 
     return render(request, 'signup.html')
+
+def verify(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method=="POST":
+            username = request.POST['username']
+            vericode = request.POST['vericode']
+            if User.objects.filter(username=username).exists():
+                user = User.objects.get(username=username)
+                if int(vericode) == vercode:
+                    user.is_active=True
+                    user.save()
+                    messages.success(request,"account verified succesfully login to your account!!")
+                    return redirect('home')
+
+        return render(request, 'verify.html')
 
 def login_view(request):
     if request.user.is_authenticated:
