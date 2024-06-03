@@ -3,6 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
+from laxmihoneyv2 import settings
+from django.core.mail import send_mail
+
+
+
 
 # Create your views here.
 def home(request):
@@ -18,12 +23,29 @@ def signup_view(request):
         lname = lname.capitalize()
         email = request.POST['email']
         password = request.POST['pass2']
-
+        
+        
+        if User.objects.filter(username=username):
+            messages.error(request, "username already exists")
+            return redirect('signup')
+        if User.objects.filter(email=email):
+            messages.error(request, "email already exists")
+            return redirect('signup')
         myuser = User.objects.create_user(username, email, password)
         myuser.first_name = fname
         myuser.last_name = lname
+        myuser.is_active = False
         myuser.save()
-        messages.success(request, "user created successfully")
+        messages.success(request, "Account created successfully!!\ncheck your mail to activate! ")
+
+        #email
+        subject="Activate Your account for Laxmi Honey Industry"
+        message ="Hello " + myuser.first_name +"!\n"+"Welcome to Laxmi honey industry"
+        from_email = settings.EMAIL_HOST_USER
+        to_emails = [myuser.email]
+        send_mail(subject,message,from_email,to_emails, fail_silently=True)
+
+
         return redirect('login')
 
     return render(request, 'signup.html')
@@ -45,7 +67,7 @@ def login_view(request):
                 messages.success(request, f"{fname} logged In successfully")
                 return redirect('home')
             else:
-                messages.error(request,"Bad credentials")
+                messages.error(request,"Bad credentials or account not verified yet!!")
                 return redirect('login')
 
         return render(request, 'login.html')
