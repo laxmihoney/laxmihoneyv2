@@ -23,7 +23,7 @@
         <div class="nav-logo">
             <a href="/" class="navimg"><img class='navimgimg' src="/static/images/logo.png"></a>
         </div>
-        <div class="nav-menu">
+        <div class="nav-menu" id="NavMenu">
             <ul class="navigation">
                 <li><a href="/" class="link {% block classactiveh %}{% endblock classactiveh %}">Home</a></li>
                 <li><a href="/products/" class="link {% block classactivep %}{% endblock classactivep %}" >Products</a></li>
@@ -31,12 +31,14 @@
                 <li><a href="/about/"class="link {% block classactivea %}{% endblock classactivea %}" >About</a></li>
             </ul>
         </div>
+        <div class="login-menu-btn">
         <div class="nav-login-button">
             <button class="btn {% block activelog %}{% endblock activelog %}" id="activelog"><a href="{% if user.is_authenticated%}/profile/{%else%}/login/{% endif %}">{% if user.is_authenticated%} {{user.first_name}} {%else%}Login {% endif %}  <i class="fa-regular fa-circle-user"></i></a></button>
         </div>
         <div class="nav-menu-btn">
-            <i class="fa-regular fa-compass"></i>
+            <i class="fa-solid fa-bars" onclick="myMenuFunction()"></i>
         </div>
+    </div>
     </header>
     </div>
     <div class="body1">
@@ -74,6 +76,18 @@
         <p>Developer: Biplov Gautam</p>
     </footer>
 
+
+<script>
+    function myMenuFunction() {
+    var i = document.getElementById ("NavMenu");
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+}
+    else {
+        i.className ="nav-menu";
+}
+}
+</script>
 </body>
 
 </html>
