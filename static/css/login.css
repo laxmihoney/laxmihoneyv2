@@ -21,14 +21,7 @@
 .signup-box::before {
     content: '';
     position: absolute;
-    width: 100%; /* Increase size to cover the area after rotation */
-    height: 100%; /* Increase size to cover the area after rotation */
-    background-image: url('/static/images/hexaboxpattern.png'); /* Path to your PNG image */
-    background-size: cover; /* Adjusts image to cover the entire div */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image in the div */
-    transform: translate(-50%, -40%) rotate(45deg); /* Rotate the image by 45 degrees */
-    transform-origin: center; /* Ensures the rotation happens around the center */
+    background: transparent;
     z-index: -1;
 }
 

@@ -1,3 +1,4 @@
+from os import name
 from django.contrib import admin
 from django.urls import path,include
 from . import views
@@ -12,5 +13,7 @@ urlpatterns = [
     path('profile/', views.profile, name = 'profile'),
     path('logout/', views.logout_view, name = 'logout'),
     path('about/', views.about,name="about"),
-    path('verify/', views.verify,name='verify')
+    path('verify/', views.verify,name='verify'),
+    path('verify/verifycode/', views.verifycode,name="verifycode")
+
     ]

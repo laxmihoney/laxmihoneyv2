@@ -25,23 +25,19 @@
     <form action="/verify/" method="post" >
         {% csrf_token %}
         <div class="top">
-            <h2>verify</h2>
+            <h2>verify username</h2>
         </div>
         <div class="form-box">
             <div class="input-box">
-                <input type="text" class="input-field" placeholder="Username" name="username" required>
-                <i class="fa-regular fa-user"></i>
-            </div>
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="verification code" id="verification" name="vericode" required>
-                <i class="fa-solid fa-lock"></i>
+                <input type="email" class="input-field" placeholder="Enter Email" name="emailv" required>
+                <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="input-box">
                 <input type="submit" class="submit" value="verify" required>
             </div>
-            <div class="thirdcol">
-                <span>Don't get verification code? <a href="/signup/">SignUp</a></span>
-            </div>
+        </div>
+        <div class="thirdcol">
+            <span>Don't registered yet? <a href="/signup/">Signup</a></span>
         </div>
     </form>
 </div>
